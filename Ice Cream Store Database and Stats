@@ -1,0 +1,53 @@
+/**  Create a Store Database  that sells ice cream 
+
+
+Chocolate breyers
+Strawberry breyers
+Vanilla breyers
+Neopolitan breyers
+Sherbet ben and jerry
+Cookie dough ben and jerry
+Coffee ben and jerry
+Cookies and Cream ben and jerry
+Fudge Brownie blue bunny
+Moose Tracks blue bunny
+Mint Choco Chip blue bunny
+Praline blue bunny
+Choco Chip generic 
+Pistachio generic 
+Caramel generic 
+**/
+
+CREATE TABLE icecream ( id INTEGER PRIMARY KEY, flavor TEXT, popularity TEXT, stock INTEGER, price INTEGER, manufacturer TEXT) ;
+
+INSERT INTO icecream VALUES( 1, "chocolate", "high", 2, 3.00, "breyers");
+INSERT INTO icecream VALUES(2, "strawberry", "high", 3, 3.00, "breyers");
+INSERT INTO icecream VALUES(3, "vanilla", "high", 6, 3.00, "breyers");
+INSERT INTO icecream VALUES(4, "neopolitan", "kinda", 3, 2.50, "breyers");
+INSERT INTO icecream VALUES(5, "sherbet", "high", 5, 2.00, "ben and jerry");
+INSERT INTO icecream VALUES(6, "cookie dough" , "very high", 10, 4.00, "ben and jerry");
+INSERT INTO icecream VALUES(7, "coffee", "kinda", 4, 3.00, "ben and jerry");
+INSERT INTO icecream VALUES(8, "cookies and cream", "very high", 10,3.50, "ben and jerry");
+INSERT INTO icecream VALUES(9, "fudge brownie", "high", 5,3.50, "blue bunny");
+INSERT INTO icecream VALUES(10, "moose tracks", "low", 2, 2.00, "blue bunny");
+INSERT INTO icecream VALUES(11, "mint choco chip", "very high",10, 4.00, "blue bunny");
+INSERT INTO icecream VALUES(12, "praline", "kinda", 3, 2.75, "blue bunny");
+INSERT INTO icecream VALUES(13, "choco chip", "high", 5, 3.00, "generic");
+INSERT INTO icecream VALUES(14, "pistachio", "kinda", 5,3.00, "generic");
+INSERT INTO icecream VALUES(15, "caramel", "low",6,2.00, "generic");
+
+/** Display the database ordered by price **/
+SELECT * FROM icecream ORDER BY price DESC;
+
+/** What is the avg stock of items made by breyers? **/
+SELECT AVG(stock) "avg stock by breyers"
+FROM icecream
+WHERE manufacturer ='breyers';
+
+/** What are the most 5 popular items? **/
+SELECT flavor, price, popularity
+FROM icecream
+order by popularity desc
+limit 5; 
+
+
