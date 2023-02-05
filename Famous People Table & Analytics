@@ -1,0 +1,77 @@
+/* Create table about the people and what they do here */
+
+CREATE TABLE famous_people 
+(id INTEGER PRIMARY KEY AUTOINCREMENT , 
+full_name TEXT ,
+age INTEGER,
+popular_role TEXT);
+
+INSERT INTO famous_people (full_name,age,popular_role) VALUES ("Angelina jolie" , "47" , "Tomb Raider"); 
+INSERT INTO famous_people (full_name,age,popular_role) VALUES ("Brad Pitt" , "59" , "Fight Club");
+INSERT INTO famous_people (full_name,age,popular_role) VALUES ("Jennifer Aniston" , "53" , "Friends");
+INSERT INTO famous_people (full_name,age,popular_role) VALUES ("Sandra Bullock", "53" , "Miss Congeniality");
+INSERT INTO famous_people (full_name,age,popular_role) VALUES ("Anna Faris" , "46" , "Scary Movie");
+INSERT INTO famous_people (full_name,age,popular_role) VALUES ( "Drew Barrymore" , "47", "E.T");
+INSERT INTO famous_people (full_name,age,popular_role) VALUES ("Julia Roberts" , "55", "Pretty Woman");
+INSERT INTO famous_people (full_name,age,popular_role) VALUES ("Jennifer Lopez" , "53", "Selena");
+INSERT INTO famous_people (full_name,age,popular_role) VALUES ("Leonardo Dicaprio" , "48" , "Titanic");
+INSERT INTO famous_people (full_name,age,popular_role) VALUES ("Brendan Fraser" , "54" ,"The Mummy");
+INSERT INTO famous_people (full_name,age,popular_role) VALUES ("Jim Carrey", "61" , "The Grinch");
+
+CREATE TABLE Movie_genres 
+( id INTEGER PRIMARY KEY AUTOINCREMENT ,
+Person_id INTEGER,
+Genre TEXT , 
+Skill_level INTEGER , 
+Popularity TEXT);
+
+INSERT INTO Movie_genres (Person_id,genre,Skill_level,Popularity) VALUES ("1", "Action", "4" , "High");
+INSERT INTO Movie_genres (Person_id,genre,Skill_level,Popularity) VALUES ("2" , "Action" , "4" , "High");
+INSERT INTO Movie_genres (Person_id,genre,Skill_level,Popularity) VALUES ("3", "Comedy" , "4", "High");
+INSERT INTO Movie_genres (Person_id,genre,Skill_level,Popularity) VALUES ("4" , "Comedy" , "5" , "Very high");
+INSERT INTO Movie_genres (Person_id,genre,Skill_level,Popularity) VALUES ("5", "Comedy" , "3" , "Medium");
+INSERT INTO Movie_genres (Person_id,genre,Skill_level,Popularity) VALUES ("6" , "Drama" , "3" , "Medium");
+INSERT INTO Movie_genres (Person_id,genre,Skill_level,Popularity) VALUES ("7" , "Drama" , "5" , "High");
+INSERT INTO Movie_genres (Person_id,genre,Skill_level,Popularity) VALUES ("8" , "Comedy" , "3" , "High");
+INSERT INTO Movie_genres (Person_id,genre,Skill_level,Popularity) VALUES ("9" , "Drama", "5" , "Very high");
+INSERT INTO Movie_genres (Person_id,genre,Skill_level,Popularity) VALUES ("10" , "Comedy" , "4" , "Medium");
+INSERT INTO Movie_genres (Person_id,genre,Skill_level,Popularity) VALUES ("11" , "Jim Carrey" , "5" , "Very High");
+
+
+CREATE TABLE place_of_birth 
+( id INTEGER PRIMARY KEY ,
+Person_id INTEGER,
+State TEXT,
+City TEXT,
+Year INTEGER);
+
+INSERT INTO place_of_birth (Person_id,State,City,Year) VALUES ("1", "California", "Los angeles" , "1975");
+INSERT INTO place_of_birth (Person_id,State,City,Year) VALUES ("2","Oklahoma", "Shawnee" , "1963");
+INSERT INTO place_of_birth (Person_id,State,City,Year) VALUES ("3","California", "Los angeles" , "1969");
+INSERT INTO place_of_birth (Person_id ,State,City,Year) VALUES ("4","Virginia" , "Arlington County" , "1964");
+INSERT INTO place_of_birth (Person_id ,State,City,Year) VALUES ("5" , "Maryland" , "Baltimore" , "1976");
+INSERT INTO place_of_birth (Person_id ,State,City,Year) VALUES ("6" , "California" , "Colver" , "1975");
+INSERT INTO place_of_birth (Person_id ,State,City,Year) VALUES ("7" , "Georgia" , "Smyrna" , "1967");
+INSERT INTO place_of_birth (Person_id,State,City,Year) VALUES ("8" , "New York", "Bronx" , "1969");
+INSERT INTO place_of_birth (Person_id,State,City,Year) VALUES ("9" , "California" , "Los angeles" , "1974");
+INSERT INTO place_of_birth (Person_id,State,City,Year) VALUES ("10" , "Indiana" , "Indianapolis" , "1968");
+INSERT INTO place_of_birth (Person_id,State,City,Year) VALUES ("11" , "Canada" , "Ontario", "1962");
+
+
+SELECT * FROM famous_people;
+
+SELECT famous_people.full_name, famous_people.popular_role,place_of_birth.City ,place_of_birth.Year, Movie_genres.skill_level , Movie_genres.Popularity
+FROM famous_people 
+LEFT OUTER JOIN place_of_birth
+ON famous_people.id = place_of_birth.id
+LEFT OUTER JOIN Movie_genres
+ON famous_people.id = Movie_genres.id;
+
+SELECT full_name , age,
+    CASE
+        WHEN age <= 50 THEN "young age"
+        WHEN age >= 50 THEN "middle age"
+        WHEN age >= 70 THEN "old age"
+        ELSE "Young"
+        END as "Kind of age"
+        FROM famous_people;
