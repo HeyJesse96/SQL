@@ -62,7 +62,7 @@ FROM FebSales
 WHERE location LIKE "%Los Angeles%"
 GROUP BY product;
 
-#9.Which locations in New York received at least 3 orders in January, and how many orders did they each receive? (Hint: use HAVING).
+#9.Which locations in New York received at least 3 orders in January, and how many orders did they each receive?.
 
 SELECT location, COUNT(orderID)
 FROM BIT_DB.JanSales
